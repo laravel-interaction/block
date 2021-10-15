@@ -9,7 +9,10 @@ use LaravelInteraction\Block\Tests\Models\Channel;
 use LaravelInteraction\Block\Tests\Models\User;
 use LaravelInteraction\Block\Tests\TestCase;
 
-class BlockerTest extends TestCase
+/**
+ * @internal
+ */
+final class BlockerTest extends TestCase
 {
     public function testBlock(): void
     {

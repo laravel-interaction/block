@@ -47,7 +47,7 @@ trait Blockable
     {
         return $query->whereDoesntHave(
             'blockers',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -57,7 +57,7 @@ trait Blockable
     {
         return $query->whereHas(
             'blockers',
-            function (Builder $query) use ($user) {
+            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -90,7 +90,7 @@ trait Blockable
         return (int) $this->blockers_count;
     }
 
-    public function blockersCountForHumans($precision = 1, $mode = PHP_ROUND_HALF_UP, $divisors = null): string
+    public function blockersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
             $this->blockersCount(),

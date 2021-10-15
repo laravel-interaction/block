@@ -10,7 +10,10 @@ use LaravelInteraction\Block\Tests\Models\Channel;
 use LaravelInteraction\Block\Tests\Models\User;
 use LaravelInteraction\Block\Tests\TestCase;
 
-class BlockedTest extends TestCase
+/**
+ * @internal
+ */
+final class BlockedTest extends TestCase
 {
     public function testOnce(): void
     {

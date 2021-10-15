@@ -25,6 +25,9 @@ use LaravelInteraction\Block\Events\Unblocked;
  */
 class Block extends MorphPivot
 {
+    /**
+     * @var array<string, class-string<\LaravelInteraction\Block\Events\Blocked>>|array<string, class-string<\LaravelInteraction\Block\Events\Unblocked>>
+     */
     protected $dispatchesEvents = [
         'created' => Blocked::class,
         'deleted' => Unblocked::class,
@@ -43,6 +46,9 @@ class Block extends MorphPivot
         );
     }
 
+    /**
+     * @var bool
+     */
     public $incrementing = true;
 
     public function getIncrementing(): bool

@@ -9,22 +9,25 @@ use LaravelInteraction\Block\Block;
 use LaravelInteraction\Block\Tests\Models\Channel;
 use LaravelInteraction\Block\Tests\Models\User;
 
-class BlockTest extends TestCase
+/**
+ * @internal
+ */
+final class BlockTest extends TestCase
 {
     /**
      * @var \LaravelInteraction\Block\Tests\Models\User
      */
-    protected $user;
+    private $user;
 
     /**
      * @var \LaravelInteraction\Block\Tests\Models\Channel
      */
-    protected $channel;
+    private $channel;
 
     /**
      * @var \LaravelInteraction\Block\Block
      */
-    protected $block;
+    private $block;
 
     protected function setUp(): void
     {
