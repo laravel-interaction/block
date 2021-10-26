@@ -14,6 +14,5 @@ use LaravelInteraction\Block\Concerns\Blocker;
 class User extends Model
 {
     use Blocker;
-
     use Blockable;
 }
