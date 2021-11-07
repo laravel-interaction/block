@@ -47,7 +47,7 @@ trait Blockable
     {
         return $query->whereDoesntHave(
             'blockers',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );
@@ -57,7 +57,7 @@ trait Blockable
     {
         return $query->whereHas(
             'blockers',
-            function (Builder $query) use ($user): \Illuminate\Database\Eloquent\Builder {
+            function (Builder $query) use ($user): Builder {
                 return $query->whereKey($user->getKey());
             }
         );

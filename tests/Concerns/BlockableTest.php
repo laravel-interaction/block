@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelInteraction\Block\Tests\Concerns;
 
+use Iterator;
 use LaravelInteraction\Block\Tests\Models\Channel;
 use LaravelInteraction\Block\Tests\Models\User;
 use LaravelInteraction\Block\Tests\TestCase;
@@ -16,7 +17,7 @@ final class BlockableTest extends TestCase
     /**
      * @return \Iterator<array<class-string<\LaravelInteraction\Block\Tests\Models\Channel|\LaravelInteraction\Block\Tests\Models\User>>>
      */
-    public function provideModelClasses(): \Iterator
+    public function provideModelClasses(): Iterator
     {
         yield [Channel::class];
         yield [User::class];
