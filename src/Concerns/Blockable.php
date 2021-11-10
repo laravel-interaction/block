@@ -90,6 +90,9 @@ trait Blockable
         return (int) $this->blockers_count;
     }
 
+    /**
+     * @param array<int, string>|null $divisors
+     */
     public function blockersCountForHumans(int $precision = 1, int $mode = PHP_ROUND_HALF_UP, $divisors = null): string
     {
         return Interaction::numberForHumans(
