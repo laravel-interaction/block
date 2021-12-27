@@ -17,7 +17,9 @@ class CreateBlocksTable extends Migration
             config('block.table_names.blocks'),
             function (Blueprint $table): void {
                 config('block.uuids') ? $table->uuid('uuid') : $table->bigIncrements('id');
-                $table->unsignedBigInteger(config('block.column_names.user_foreign_key'))->index()->comment('user_id');
+                $table->unsignedBigInteger(config('block.column_names.user_foreign_key'))
+                    ->index()
+                    ->comment('user_id');
                 $table->morphs('blockable');
                 $table->timestamps();
                 $table->unique([config('block.column_names.user_foreign_key'), 'blockable_type', 'blockable_id']);
