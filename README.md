@@ -9,7 +9,7 @@ User block/unblock behaviour for Laravel.
 <a href="https://packagist.org/packages/laravel-interaction/block"><img src="https://poser.pugx.org/laravel-interaction/block/license" alt="License"></a>
 </p>
 
-> **Requires [PHP 7.2.0+](https://php.net/releases/)**
+> **Requires [PHP 7.3+](https://php.net/releases/)**
 
 Require Laravel Block using [Composer](https://getcomposer.org):
 
