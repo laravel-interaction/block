@@ -70,7 +70,7 @@ class Block extends MorphPivot
         return $this->uuids() ? 'string' : parent::getKeyType();
     }
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('block.table_names.blocks') ?: parent::getTable();
     }
