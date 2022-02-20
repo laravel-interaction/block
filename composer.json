@@ -3,6 +3,11 @@
     "description": "User block/unblock behaviour for Laravel.",
     "keywords": ["laravel", "block"],
     "license": "MIT",
+    "homepage": "https://github.com/laravel-interaction/block",
+    "support": {
+        "issues": "https://github.com/laravel-interaction/block/issues",
+        "source": "https://github.com/laravel-interaction/block"
+    },
     "authors": [
         {
             "name": "zingimmick",
