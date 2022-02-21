@@ -77,7 +77,7 @@ trait Blocker
             $this->unsetRelation('blockerBlocks');
         }
 
-        return (bool) $this->blockedItems(get_class($object))
+        return (bool) $this->blockedItems(\get_class($object))
             ->detach($object->getKey());
     }
 
