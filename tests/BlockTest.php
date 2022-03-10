@@ -53,7 +53,7 @@ final class BlockTest extends TestCase
 
     public function testGetTable(): void
     {
-        self::assertSame(config('block.table_names.blocks'), $this->block->getTable());
+        self::assertSame(config('block.table_names.pivot'), $this->block->getTable());
     }
 
     public function testBlocker(): void

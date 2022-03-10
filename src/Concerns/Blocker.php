@@ -50,11 +50,7 @@ trait Blocker
 
     public function blockerBlocks(): HasMany
     {
-        return $this->hasMany(
-            config('block.models.block'),
-            config('block.column_names.user_foreign_key'),
-            $this->getKeyName()
-        );
+        return $this->hasMany(config('block.models.pivot'), config('block.column_names.user_foreign_key'));
     }
 
     /**
@@ -86,7 +82,7 @@ trait Blocker
         return $this->morphedByMany(
             $class,
             'blockable',
-            config('block.models.block'),
+            config('block.models.pivot'),
             config('block.column_names.user_foreign_key')
         )
             ->withTimestamps();

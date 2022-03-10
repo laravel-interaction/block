@@ -72,7 +72,7 @@ class Block extends MorphPivot
 
     public function getTable(): string
     {
-        return config('block.table_names.blocks') ?: parent::getTable();
+        return config('block.table_names.pivot') ?: parent::getTable();
     }
 
     public function isBlockedBy(Model $user): bool

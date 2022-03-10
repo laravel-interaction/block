@@ -65,7 +65,7 @@ trait Blockable
 
     public function blockableBlocks(): MorphMany
     {
-        return $this->morphMany(config('block.models.block'), 'blockable');
+        return $this->morphMany(config('block.models.pivot'), 'blockable');
     }
 
     public function blockers(): BelongsToMany
@@ -73,7 +73,7 @@ trait Blockable
         return $this->morphToMany(
             config('block.models.user'),
             'blockable',
-            config('block.models.block'),
+            config('block.models.pivot'),
             null,
             config('block.column_names.user_foreign_key')
         )->withTimestamps();

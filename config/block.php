@@ -9,10 +9,10 @@ return [
     'uuids' => false,
     'models' => [
         'user' => \App\User::class,
-        'block' => Block::class,
+        'pivot' => Block::class,
     ],
     'table_names' => [
-        'blocks' => 'blocks',
+        'pivot' => 'blocks',
     ],
     'column_names' => [
         'user_foreign_key' => 'user_id',
