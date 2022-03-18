@@ -9,12 +9,39 @@ User block/unblock behaviour for Laravel.
 <a href="https://packagist.org/packages/laravel-interaction/block"><img src="https://poser.pugx.org/laravel-interaction/block/license" alt="License"></a>
 </p>
 
-> **Requires [PHP 7.3+](https://php.net/releases/)**
+## Introduction
 
-Require Laravel Block using [Composer](https://getcomposer.org):
+It let people express how they feel about the model(documentation/subject/topic), prevent this model from interacting with you and sending you notifications.
+
+![](https://img.shields.io/badge/%F0%9F%9A%A7-1.2k-green?style=social)
+
+## Installation
+
+### Requirements
+
+- [PHP 7.3+](https://php.net/releases/)
+- [Composer](https://getcomposer.org)
+- [Laravel 8.0+](https://laravel.com/docs/releases)
+
+### Instructions
+
+Require Laravel Block using [Composer](https://getcomposer.org).
 
 ```bash
 composer require laravel-interaction/block
+```
+
+Publish configuration and migrations
+
+```bash
+php artisan vendor:publish --tag=block-config
+php artisan vendor:publish --tag=block-migrations
+```
+
+Run database migrations.
+
+```bash
+php artisan migrate
 ```
 
 ## Usage

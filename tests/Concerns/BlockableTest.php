@@ -20,6 +20,7 @@ final class BlockableTest extends TestCase
     public function provideModelClasses(): Iterator
     {
         yield [Channel::class];
+
         yield [User::class];
     }
 
