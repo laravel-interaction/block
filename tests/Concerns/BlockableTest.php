@@ -29,7 +29,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
-    public function testBlocks($modelClass): void
+    public function testBlocks(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -43,7 +43,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
-    public function testBlockersCount($modelClass): void
+    public function testBlockersCount(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -60,7 +60,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
-    public function testBlockersCountForHumans($modelClass): void
+    public function testBlockersCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -73,7 +73,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
-    public function testIsBlockedBy($modelClass): void
+    public function testIsBlockedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -92,7 +92,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
-    public function testIsNotBlockedBy($modelClass): void
+    public function testIsNotBlockedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -111,7 +111,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
-    public function testBlockers($modelClass): void
+    public function testBlockers(string $modelClass): void
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
@@ -126,7 +126,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
-    public function testScopeWhereBlockedBy($modelClass): void
+    public function testScopeWhereBlockedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $other = User::query()->create();
@@ -141,7 +141,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
-    public function testScopeWhereNotBlockedBy($modelClass): void
+    public function testScopeWhereNotBlockedBy(string $modelClass): void
     {
         $user = User::query()->create();
         $other = User::query()->create();
