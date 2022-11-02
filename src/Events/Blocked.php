@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blocked
 {
-    /**
-     * @var \Illuminate\Database\Eloquent\Model
-     */
-    public $block;
-
-    public function __construct(Model $block)
+    public function __construct(public Model $model)
     {
-        $this->block = $block;
     }
 }

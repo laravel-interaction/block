@@ -53,10 +53,7 @@ trait Blocker
         return $this->hasMany(config('block.models.pivot'), config('block.column_names.user_foreign_key'));
     }
 
-    /**
-     * @return bool|\LaravelInteraction\Block\Block
-     */
-    public function toggleBlock(Model $object)
+    public function toggleBlock(Model $object): bool|Block
     {
         return $this->hasBlocked($object) ? $this->unblock($object) : $this->block($object);
     }
@@ -73,7 +70,7 @@ trait Blocker
             $this->unsetRelation('blockerBlocks');
         }
 
-        return (bool) $this->blockedItems(\get_class($object))
+        return (bool) $this->blockedItems($object::class)
             ->detach($object->getKey());
     }
 

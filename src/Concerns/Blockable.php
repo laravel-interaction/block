@@ -48,9 +48,7 @@ trait Blockable
     {
         return $query->whereDoesntHave(
             'blockers',
-            static function (Builder $query) use ($user): Builder {
-                return $query->whereKey($user->getKey());
-            }
+            static fn (Builder $query): Builder => $query->whereKey($user->getKey())
         );
     }
 
@@ -58,9 +56,7 @@ trait Blockable
     {
         return $query->whereHas(
             'blockers',
-            static function (Builder $query) use ($user): Builder {
-                return $query->whereKey($user->getKey());
-            }
+            static fn (Builder $query): Builder => $query->whereKey($user->getKey())
         );
     }
 
