@@ -16,7 +16,7 @@ final class BlockableTest extends TestCase
     /**
      * @return \Iterator<array<class-string<\LaravelInteraction\Block\Tests\Models\Channel|\LaravelInteraction\Block\Tests\Models\User>>>
      */
-    public function provideModelClasses(): \Iterator
+    public static function provideModelClasses(): \Iterator
     {
         yield [Channel::class];
 
