@@ -53,7 +53,7 @@ trait Blocker
         return $this->hasMany(config('block.models.pivot'), config('block.column_names.user_foreign_key'));
     }
 
-    public function toggleBlock(Model $object): bool|Block
+    public function toggleBlock(Model $object): Block|bool
     {
         return $this->hasBlocked($object) ? $this->unblock($object) : $this->block($object);
     }
