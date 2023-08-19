@@ -32,45 +32,45 @@ final class BlockTest extends TestCase
 
     public function testBlockTimestamp(): void
     {
-        self::assertInstanceOf(Carbon::class, $this->block->created_at);
-        self::assertInstanceOf(Carbon::class, $this->block->updated_at);
+        $this->assertInstanceOf(Carbon::class, $this->block->created_at);
+        $this->assertInstanceOf(Carbon::class, $this->block->updated_at);
     }
 
     public function testScopeWithType(): void
     {
-        self::assertSame(1, Block::query()->withType(Channel::class)->count());
-        self::assertSame(0, Block::query()->withType(User::class)->count());
+        $this->assertSame(1, Block::query()->withType(Channel::class)->count());
+        $this->assertSame(0, Block::query()->withType(User::class)->count());
     }
 
     public function testGetTable(): void
     {
-        self::assertSame(config('block.table_names.pivot'), $this->block->getTable());
+        $this->assertSame(config('block.table_names.pivot'), $this->block->getTable());
     }
 
     public function testBlocker(): void
     {
-        self::assertInstanceOf(User::class, $this->block->blocker);
+        $this->assertInstanceOf(User::class, $this->block->blocker);
     }
 
     public function testBlockable(): void
     {
-        self::assertInstanceOf(Channel::class, $this->block->blockable);
+        $this->assertInstanceOf(Channel::class, $this->block->blockable);
     }
 
     public function testUser(): void
     {
-        self::assertInstanceOf(User::class, $this->block->user);
+        $this->assertInstanceOf(User::class, $this->block->user);
     }
 
     public function testIsBlockedTo(): void
     {
-        self::assertTrue($this->block->isBlockedTo($this->channel));
-        self::assertFalse($this->block->isBlockedTo($this->user));
+        $this->assertTrue($this->block->isBlockedTo($this->channel));
+        $this->assertFalse($this->block->isBlockedTo($this->user));
     }
 
     public function testIsBlockedBy(): void
     {
-        self::assertFalse($this->block->isBlockedBy($this->channel));
-        self::assertTrue($this->block->isBlockedBy($this->user));
+        $this->assertFalse($this->block->isBlockedBy($this->channel));
+        $this->assertTrue($this->block->isBlockedBy($this->user));
     }
 }

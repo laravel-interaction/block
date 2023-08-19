@@ -33,8 +33,8 @@ final class BlockableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->block($model);
-        self::assertSame(1, $model->blockableBlocks()->count());
-        self::assertSame(1, $model->blockableBlocks->count());
+        $this->assertSame(1, $model->blockableBlocks()->count());
+        $this->assertSame(1, $model->blockableBlocks->count());
     }
 
     /**
@@ -47,11 +47,11 @@ final class BlockableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->block($model);
-        self::assertSame(1, $model->blockersCount());
+        $this->assertSame(1, $model->blockersCount());
         $user->unblock($model);
-        self::assertSame(1, $model->blockersCount());
+        $this->assertSame(1, $model->blockersCount());
         $model->loadCount('blockers');
-        self::assertSame(0, $model->blockersCount());
+        $this->assertSame(0, $model->blockersCount());
     }
 
     /**
@@ -64,7 +64,7 @@ final class BlockableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->block($model);
-        self::assertSame('1', $model->blockersCountForHumans());
+        $this->assertSame('1', $model->blockersCountForHumans());
     }
 
     /**
@@ -76,14 +76,14 @@ final class BlockableTest extends TestCase
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
-        self::assertFalse($model->isBlockedBy($model));
+        $this->assertFalse($model->isBlockedBy($model));
         $user->block($model);
-        self::assertTrue($model->isBlockedBy($user));
+        $this->assertTrue($model->isBlockedBy($user));
         $model->load('blockers');
         $user->unblock($model);
-        self::assertTrue($model->isBlockedBy($user));
+        $this->assertTrue($model->isBlockedBy($user));
         $model->load('blockers');
-        self::assertFalse($model->isBlockedBy($user));
+        $this->assertFalse($model->isBlockedBy($user));
     }
 
     /**
@@ -95,14 +95,14 @@ final class BlockableTest extends TestCase
     {
         $user = User::query()->create();
         $model = $modelClass::query()->create();
-        self::assertTrue($model->isNotBlockedBy($model));
+        $this->assertTrue($model->isNotBlockedBy($model));
         $user->block($model);
-        self::assertFalse($model->isNotBlockedBy($user));
+        $this->assertFalse($model->isNotBlockedBy($user));
         $model->load('blockers');
         $user->unblock($model);
-        self::assertFalse($model->isNotBlockedBy($user));
+        $this->assertFalse($model->isNotBlockedBy($user));
         $model->load('blockers');
-        self::assertTrue($model->isNotBlockedBy($user));
+        $this->assertTrue($model->isNotBlockedBy($user));
     }
 
     /**
@@ -115,9 +115,9 @@ final class BlockableTest extends TestCase
         $user = User::query()->create();
         $model = $modelClass::query()->create();
         $user->block($model);
-        self::assertSame(1, $model->blockers()->count());
+        $this->assertSame(1, $model->blockers()->count());
         $user->unblock($model);
-        self::assertSame(0, $model->blockers()->count());
+        $this->assertSame(0, $model->blockers()->count());
     }
 
     /**
@@ -131,8 +131,8 @@ final class BlockableTest extends TestCase
         $other = User::query()->create();
         $model = $modelClass::query()->create();
         $user->block($model);
-        self::assertSame(1, $modelClass::query()->whereBlockedBy($user)->count());
-        self::assertSame(0, $modelClass::query()->whereBlockedBy($other)->count());
+        $this->assertSame(1, $modelClass::query()->whereBlockedBy($user)->count());
+        $this->assertSame(0, $modelClass::query()->whereBlockedBy($other)->count());
     }
 
     /**
@@ -146,10 +146,10 @@ final class BlockableTest extends TestCase
         $other = User::query()->create();
         $model = $modelClass::query()->create();
         $user->block($model);
-        self::assertSame(
+        $this->assertSame(
             $modelClass::query()->whereKeyNot($model->getKey())->count(),
             $modelClass::query()->whereNotBlockedBy($user)->count()
         );
-        self::assertSame($modelClass::query()->count(), $modelClass::query()->whereNotBlockedBy($other)->count());
+        $this->assertSame($modelClass::query()->count(), $modelClass::query()->whereNotBlockedBy($other)->count());
     }
 }

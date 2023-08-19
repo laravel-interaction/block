@@ -86,8 +86,8 @@ final class BlockerTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->toggleBlock($channel);
-        self::assertSame(1, $user->blockerBlocks()->count());
-        self::assertSame(1, $user->blockerBlocks->count());
+        $this->assertSame(1, $user->blockerBlocks()->count());
+        $this->assertSame(1, $user->blockerBlocks->count());
     }
 
     public function testHasBlocked(): void
@@ -95,10 +95,10 @@ final class BlockerTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->toggleBlock($channel);
-        self::assertTrue($user->hasBlocked($channel));
+        $this->assertTrue($user->hasBlocked($channel));
         $user->toggleBlock($channel);
         $user->load('blockerBlocks');
-        self::assertFalse($user->hasBlocked($channel));
+        $this->assertFalse($user->hasBlocked($channel));
     }
 
     public function testHasNotBlocked(): void
@@ -106,8 +106,8 @@ final class BlockerTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->toggleBlock($channel);
-        self::assertFalse($user->hasNotBlocked($channel));
+        $this->assertFalse($user->hasNotBlocked($channel));
         $user->toggleBlock($channel);
-        self::assertTrue($user->hasNotBlocked($channel));
+        $this->assertTrue($user->hasNotBlocked($channel));
     }
 }

@@ -26,19 +26,19 @@ final class UuidsTest extends TestCase
     public function testKeyType(): void
     {
         $block = new Block();
-        self::assertSame('string', $block->getKeyType());
+        $this->assertSame('string', $block->getKeyType());
     }
 
     public function testIncrementing(): void
     {
         $block = new Block();
-        self::assertFalse($block->getIncrementing());
+        $this->assertFalse($block->getIncrementing());
     }
 
     public function testKeyName(): void
     {
         $block = new Block();
-        self::assertSame('uuid', $block->getKeyName());
+        $this->assertSame('uuid', $block->getKeyName());
     }
 
     public function testKey(): void
@@ -46,6 +46,6 @@ final class UuidsTest extends TestCase
         $user = User::query()->create();
         $channel = Channel::query()->create();
         $user->block($channel);
-        self::assertIsString($user->blockerBlocks()->firstOrFail()->getKey());
+        $this->assertIsString($user->blockerBlocks()->firstOrFail()->getKey());
     }
 }
