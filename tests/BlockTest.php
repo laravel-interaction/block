@@ -14,11 +14,11 @@ use LaravelInteraction\Block\Tests\Models\User;
  */
 final class BlockTest extends TestCase
 {
-    private \LaravelInteraction\Block\Tests\Models\User $user;
+    private User $user;
 
-    private \LaravelInteraction\Block\Tests\Models\Channel $channel;
+    private Channel $channel;
 
-    private \LaravelInteraction\Block\Block $block;
+    private Block $block;
 
     protected function setUp(): void
     {
