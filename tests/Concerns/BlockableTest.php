@@ -34,7 +34,7 @@ final class BlockableTest extends TestCase
         $model = $modelClass::query()->create();
         $user->block($model);
         $this->assertSame(1, $model->blockableBlocks()->count());
-        $this->assertSame(1, $model->blockableBlocks->count());
+        $this->assertCount(1, $model->blockableBlocks);
     }
 
     /**

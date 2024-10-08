@@ -87,7 +87,7 @@ final class BlockerTest extends TestCase
         $channel = Channel::query()->create();
         $user->toggleBlock($channel);
         $this->assertSame(1, $user->blockerBlocks()->count());
-        $this->assertSame(1, $user->blockerBlocks->count());
+        $this->assertCount(1, $user->blockerBlocks);
     }
 
     public function testHasBlocked(): void
