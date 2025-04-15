@@ -7,6 +7,7 @@ namespace LaravelInteraction\Block\Tests\Concerns;
 use LaravelInteraction\Block\Tests\Models\Channel;
 use LaravelInteraction\Block\Tests\Models\User;
 use LaravelInteraction\Block\Tests\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
@@ -14,20 +15,11 @@ use LaravelInteraction\Block\Tests\TestCase;
 final class BlockableTest extends TestCase
 {
     /**
-     * @return \Iterator<array<class-string<\LaravelInteraction\Block\Tests\Models\Channel|\LaravelInteraction\Block\Tests\Models\User>>>
-     */
-    public static function provideModelClasses(): \Iterator
-    {
-        yield [Channel::class];
-
-        yield [User::class];
-    }
-
-    /**
      * @dataProvider provideModelClasses
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testBlocks(string $modelClass): void
     {
         $user = User::query()->create();
@@ -42,6 +34,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testBlockersCount(string $modelClass): void
     {
         $user = User::query()->create();
@@ -59,6 +52,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testBlockersCountForHumans(string $modelClass): void
     {
         $user = User::query()->create();
@@ -72,6 +66,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsBlockedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -91,6 +86,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testIsNotBlockedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -110,6 +106,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testBlockers(string $modelClass): void
     {
         $user = User::query()->create();
@@ -125,6 +122,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereBlockedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -140,6 +138,7 @@ final class BlockableTest extends TestCase
      *
      * @param class-string<\LaravelInteraction\Block\Tests\Models\User|\LaravelInteraction\Block\Tests\Models\Channel> $modelClass
      */
+    #[DataProvider('provideModelClasses')]
     public function testScopeWhereNotBlockedBy(string $modelClass): void
     {
         $user = User::query()->create();
@@ -151,5 +150,15 @@ final class BlockableTest extends TestCase
             $modelClass::query()->whereNotBlockedBy($user)->count()
         );
         $this->assertSame($modelClass::query()->count(), $modelClass::query()->whereNotBlockedBy($other)->count());
+    }
+
+    /**
+     * @return \Iterator<array<class-string<\LaravelInteraction\Block\Tests\Models\Channel|\LaravelInteraction\Block\Tests\Models\User>>>
+     */
+    public static function provideModelClasses(): \Iterator
+    {
+        yield [Channel::class];
+
+        yield [User::class];
     }
 }
